@@ -17,6 +17,9 @@ class GameBoard: NSObject {
     override init() {
         currentPlayer = Player.allPlayers[0]
         
+        for _ in 0..<GameBoard.width * GameBoard.height {
+            slots.append(.none)
+        }
         
         super.init()
     }
