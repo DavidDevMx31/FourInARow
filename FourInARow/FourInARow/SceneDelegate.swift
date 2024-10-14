@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         
-        let navController = UINavigationController(rootViewController: ViewController())
+        let navController = UINavigationController(rootViewController: GameBoardViewController())
         navController.navigationBar.isTranslucent = false
         window?.rootViewController = navController
         window?.makeKeyAndVisible()
