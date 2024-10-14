@@ -20,6 +20,8 @@ class GameBoardViewController: UIViewController {
     
     private var placedChips = [[UIImageView]]()
     
+    var board: GameBoard!
+    
     override func loadView() {
         super.loadView()
         createContainerView()
@@ -33,6 +35,8 @@ class GameBoardViewController: UIViewController {
         super.viewDidLoad()
         
         self.view.backgroundColor = .black
+        placeChips()
+        resetBoard()
     }
     
     //MARK: Create views
@@ -139,5 +143,22 @@ class GameBoardViewController: UIViewController {
         
     }
     
+    //MARK: Game
+    private func placeChips() {
+        for _ in 0 ..< GameBoard.width {
+            placedChips.append([UIImageView]())
+        }
+    }
     
+    private func resetBoard() {
+        board = GameBoard()
+        
+        for i in 0 ..< placedChips.count {
+            for chip in placedChips[i] {
+                chip.removeFromSuperview()
+            }
+            
+            placedChips[i].removeAll(keepingCapacity: true)
+        }
+    }
 }
