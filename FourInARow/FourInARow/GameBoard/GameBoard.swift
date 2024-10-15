@@ -31,4 +31,14 @@ class GameBoard: NSObject {
     private func set(chip: Chip, in column: Int, row: Int) {
         slots[row + column * GameBoard.height] = chip
     }
+    
+    func nextEmptySlot(in column: Int) -> Int? {
+        for row in 0 ..< GameBoard.height {
+            if getChip(inColumn: column, row: row) == .none {
+                return row
+            }
+        }
+        return nil
+    }
+    
 }
