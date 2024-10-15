@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B492E20C2CBF1CC60050F2DD /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B492E20B2CBF1CC60050F2DD /* RoundedButton.swift */; };
 		B4C671BA2CBDDA2E00DE6EBA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C671B92CBDDA2E00DE6EBA /* AppDelegate.swift */; };
 		B4C671BC2CBDDA2E00DE6EBA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C671BB2CBDDA2E00DE6EBA /* SceneDelegate.swift */; };
 		B4C671C32CBDDA3900DE6EBA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B4C671C22CBDDA3900DE6EBA /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B492E20B2CBF1CC60050F2DD /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		B4C671B62CBDDA2E00DE6EBA /* FourInARow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FourInARow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4C671B92CBDDA2E00DE6EBA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B4C671BB2CBDDA2E00DE6EBA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B492E20A2CBF1C870050F2DD /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				B492E20B2CBF1CC60050F2DD /* RoundedButton.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
 		B4C671AD2CBDDA2E00DE6EBA = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +72,7 @@
 		B4C671B82CBDDA2E00DE6EBA /* FourInARow */ = {
 			isa = PBXGroup;
 			children = (
+				B492E20A2CBF1C870050F2DD /* CustomViews */,
 				B4C671D22CBDDD6C00DE6EBA /* Common */,
 				B4C671CD2CBDDC7C00DE6EBA /* GameBoard */,
 				B4C671B92CBDDA2E00DE6EBA /* AppDelegate.swift */,
@@ -165,6 +176,7 @@
 				B4C671D12CBDDD4100DE6EBA /* GameBoard.swift in Sources */,
 				B4C671CF2CBDDCD200DE6EBA /* GameBoardViewController.swift in Sources */,
 				B4C671D82CBDDF0C00DE6EBA /* Game.swift in Sources */,
+				B492E20C2CBF1CC60050F2DD /* RoundedButton.swift in Sources */,
 				B4C671BA2CBDDA2E00DE6EBA /* AppDelegate.swift in Sources */,
 				B4C671D42CBDDD8800DE6EBA /* Chip.swift in Sources */,
 				B4C671D62CBDDDBA00DE6EBA /* Player.swift in Sources */,
