@@ -132,7 +132,12 @@ class GameBoardViewController: UIViewController {
     
     //MARK: Actions
     @objc func makeMove(sender: UIButton) {
-        debugPrint("\(sender.tag)")
+        let column = sender.tag
+                
+        if let row = board.nextEmptySlot(in: column) {
+            board.addChip(board.currentPlayer.chip, in: column)
+            addChip(board.currentPlayer.chip, inColumn: column, row: row)
+        }
     }
     
     @objc func restartRoundTapped() {
@@ -160,5 +165,38 @@ class GameBoardViewController: UIViewController {
             
             placedChips[i].removeAll(keepingCapacity: true)
         }
+    }
+    
+    //MARK: Draw board
+    private func addChip(_ chip: Chip, inColumn column: Int, row: Int) {
+        let button = columnButtons[column]
+        let size = min(button.frame.width, button.frame.height / 6)
+        let rect = CGRect(x: 0, y: 0, width: size, height: size)
+        
+        if (placedChips[column].count < row + 1) {
+            let newChip = UIImageView(frame: rect)
+            let chipImage = UIImage(named: chip.imageName)
+            newChip.image = chipImage
+            newChip.isUserInteractionEnabled = false
+            newChip.center = positionForChip(inColumn: column, row: row)
+            newChip.transform = CGAffineTransform(translationX: 0, y: -800)
+            self.view.addSubview(newChip)
+            
+            UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseIn) {
+                newChip.transform = CGAffineTransform.identity
+            }
+            
+            placedChips[column].append(newChip)
+        }
+    }
+    
+    private func positionForChip(inColumn column: Int, row: Int) -> CGPoint {
+        let button = columnButtons[column]
+        let size = min(button.frame.width, button.frame.height / 6)
+        
+        let xOffset = button.frame.midX
+        var yOffset = button.frame.maxY - size / 2
+        yOffset -= size * CGFloat(row)
+        return CGPoint(x: xOffset, y: yOffset)
     }
 }
