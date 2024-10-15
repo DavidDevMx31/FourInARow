@@ -27,4 +27,8 @@ class GameBoard: NSObject {
     private func getChip(inColumn column: Int, row: Int) -> Chip {
         return slots[row + column * GameBoard.height]
     }
+    
+    private func set(chip: Chip, in column: Int, row: Int) {
+        slots[row + column * GameBoard.height] = chip
+    }
 }
