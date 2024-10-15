@@ -196,25 +196,17 @@ class GameBoardViewController: UIViewController {
     }
     
     private func checkRoundResult(column: Int, row: Int) {
-        var gameOverTitle: String? = nil
+        var gameOverTitle = ""
         
         if board.playerWins(column: column, row: row) {
+            gameStatus.declareWinner(player: board.currentPlayer)
             gameOverTitle = "\(board.currentPlayer.chip.name) wins"
+            let message = "Red wins: \(gameStatus.redWins)\nYellow wins: \(gameStatus.yellowWins)"
+            showGameCompletedAlert(title: gameOverTitle, message: message)
+            return
         } else if board.isGameBoardFull() {
             gameOverTitle = "Draw!"
-        }
-        
-        if gameOverTitle != nil {
-            gameStatus.declareWinner(player: board.currentPlayer)
-            let message = "Red wins: \(gameStatus.redWins)\nYellow wins: \(gameStatus.yellowWins)"
-            let alert = UIAlertController(title: gameOverTitle, message: message, preferredStyle: .alert)
-            let alertAction = UIAlertAction(title: "Play again", style: .default) { [unowned self] (action) in
-                self.resetBoard()
-                self.updateScoreLabels()
-            }
-            
-            alert.addAction(alertAction)
-            present(alert, animated: true)
+            showGameCompletedAlert(title: gameOverTitle, message: nil)
             return
         }
         
@@ -229,6 +221,17 @@ class GameBoardViewController: UIViewController {
     private func updateScoreLabels() {
         playerOneScoreLabel.text = "Red: \(gameStatus.redWins)"
         playerTwoScoreLabel.text = "Yellow: \(gameStatus.yellowWins)"
+    }
+    
+    private func showGameCompletedAlert(title: String, message: String?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alertAction = UIAlertAction(title: "Play again", style: .default) { [unowned self] (action) in
+            self.resetBoard()
+            self.updateScoreLabels()
+        }
+        
+        alert.addAction(alertAction)
+        present(alert, animated: true)
     }
     
     //MARK: Draw board
