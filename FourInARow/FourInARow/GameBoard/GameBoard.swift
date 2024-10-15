@@ -45,4 +45,9 @@ class GameBoard: NSObject {
         return nextEmptySlot(in: column) != nil
     }
     
+    func addChip(_ chip: Chip, in column: Int) {
+        if let row = nextEmptySlot(in: column) {
+            set(chip: chip, in: column, row: row)
+        }
+    }
 }
