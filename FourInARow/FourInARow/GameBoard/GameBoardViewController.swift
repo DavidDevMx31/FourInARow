@@ -143,7 +143,19 @@ class GameBoardViewController: UIViewController {
     }
     
     @objc func restartRoundTapped() {
+        let alert = UIAlertController(title: "Would you like to restart the current round?",
+                                      message: "You will lose the current round progress.",
+                                      preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "Restart round", style: .default) {
+            [unowned self] (action) in
+            self.resetBoard()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         
+        alert.addAction(defaultAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true)
     }
     
     @objc func resetCounterTapped() {
