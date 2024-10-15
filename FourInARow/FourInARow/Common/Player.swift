@@ -13,6 +13,14 @@ final class Player: NSObject {
     
     static var allPlayers = [Player(chip: .red), Player(chip: .yellow)]
     
+    var opponent: Player {
+        if chip == .red {
+            return Player.allPlayers[1]
+        } else {
+            return Player.allPlayers[0]
+        }
+    }
+    
     init(chip: Chip) {
         self.chip = chip
         self.playerId = chip.rawValue
