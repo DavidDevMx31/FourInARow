@@ -159,7 +159,21 @@ class GameBoardViewController: UIViewController {
     }
     
     @objc func resetCounterTapped() {
+        let alert = UIAlertController(title: "Would you like to restart the win counter?",
+                                      message: "You will lose the current score.",
+                                      preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "Restart counter", style: .default) {
+            [unowned self] (action) in
+            self.resetBoard()
+            self.gameStatus.resetVictoryCounter()
+            self.updateScoreLabels()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         
+        alert.addAction(defaultAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true)
     }
     
     //MARK: Game
