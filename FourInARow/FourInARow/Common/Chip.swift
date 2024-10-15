@@ -24,14 +24,14 @@ enum Chip: Int {
         }
     }
     
-    var color: UIColor {
+    var imageName: String {
         switch self {
         case .yellow:
-            return UIColor.yellow
+            return "YellowChip"
         case .red:
-            return UIColor.red
+            return "RedChip"
         default:
-            return UIColor.white
+            return ""
         }
     }
 }
