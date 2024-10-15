@@ -68,16 +68,14 @@ class GameBoardViewController: UIViewController {
     }
     
     private func createRestartRoundButton() {
-        restartRoundButton = UIButton(type: .system)
+        restartRoundButton = RoundedButton(title: "Restart round", backgroundColor: .systemMint)
         restartRoundButton.translatesAutoresizingMaskIntoConstraints = false
-        restartRoundButton.setTitle("Reiniciar ronda", for: .normal)
         restartRoundButton.addTarget(self, action: #selector(restartRoundTapped), for: .touchUpInside)
     }
     
     private func createResetCounterButton() {
-        resetCounterButton = UIButton(type: .system)
+        resetCounterButton = RoundedButton(title: "Restart counter", backgroundColor: .systemBlue)
         resetCounterButton.translatesAutoresizingMaskIntoConstraints = false
-        resetCounterButton.setTitle("Resetear contador", for: .normal)
         resetCounterButton.addTarget(self, action: #selector(resetCounterTapped), for: .touchUpInside)
     }
     
