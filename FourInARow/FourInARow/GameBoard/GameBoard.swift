@@ -50,4 +50,13 @@ class GameBoard: NSObject {
             set(chip: chip, in: column, row: row)
         }
     }
+    
+    func isGameBoardFull() -> Bool {
+        for column in 0..<GameBoard.width {
+            if canMove(in: column) {
+                return false
+            }
+        }
+        return true
+    }
 }
