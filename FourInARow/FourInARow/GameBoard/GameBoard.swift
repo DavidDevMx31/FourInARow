@@ -24,4 +24,7 @@ class GameBoard: NSObject {
         super.init()
     }
 
+    private func getChip(inColumn column: Int, row: Int) -> Chip {
+        return slots[row + column * GameBoard.height]
+    }
 }
