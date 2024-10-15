@@ -78,7 +78,6 @@ class GameBoard: NSObject {
     }
     
     private func checkVerticalRun(chip: Chip, row: Int, column: Int) -> Bool {
-        debugPrint("checkVerticalRun")
         if row <= 2 { return false }
         var counter = 1, x = row
         while x > 0, counter < 4 {
