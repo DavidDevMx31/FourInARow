@@ -21,6 +21,7 @@ class GameBoardViewController: UIViewController {
     private var placedChips = [[UIImageView]]()
     
     var board: GameBoard!
+    var gameStatus = Game()
     
     override func loadView() {
         super.loadView()
@@ -105,12 +106,12 @@ class GameBoardViewController: UIViewController {
     
     private func setupScoreLabels() {
         playerOneScoreLabel = UILabel(frame: .zero)
-        playerOneScoreLabel.text = "Red: 0"
+        playerOneScoreLabel.text = "Red: \(gameStatus.redWins)"
         playerOneScoreLabel.numberOfLines = 1
         playerOneScoreLabel.textColor = .white
         
         playerTwoScoreLabel = UILabel(frame: .zero)
-        playerTwoScoreLabel.text = "Yellow: 0"
+        playerTwoScoreLabel.text = "Yellow: \(gameStatus.yellowWins)"
         playerTwoScoreLabel.numberOfLines = 1
         playerTwoScoreLabel.textColor = .white
     }
@@ -178,9 +179,12 @@ class GameBoardViewController: UIViewController {
         }
         
         if gameOverTitle != nil {
-            let alert = UIAlertController(title: gameOverTitle, message: "", preferredStyle: .alert)
+            gameStatus.declareWinner(player: board.currentPlayer)
+            let message = "Red wins: \(gameStatus.redWins)\nYellow wins: \(gameStatus.yellowWins)"
+            let alert = UIAlertController(title: gameOverTitle, message: message, preferredStyle: .alert)
             let alertAction = UIAlertAction(title: "Play again", style: .default) { [unowned self] (action) in
                 self.resetBoard()
+                self.updateScoreLabels()
             }
             
             alert.addAction(alertAction)
@@ -194,6 +198,11 @@ class GameBoardViewController: UIViewController {
     
     private func updateUI() {
         title = "\(board.currentPlayer.chip.name)'s turn"
+    }
+    
+    private func updateScoreLabels() {
+        playerOneScoreLabel.text = "Red: \(gameStatus.redWins)"
+        playerTwoScoreLabel.text = "Yellow: \(gameStatus.yellowWins)"
     }
     
     //MARK: Draw board
