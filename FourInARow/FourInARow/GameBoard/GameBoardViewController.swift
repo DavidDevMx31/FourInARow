@@ -137,6 +137,7 @@ class GameBoardViewController: UIViewController {
         if let row = board.nextEmptySlot(in: column) {
             board.addChip(board.currentPlayer.chip, in: column)
             addChip(board.currentPlayer.chip, inColumn: column, row: row)
+            checkRoundResult(column: column, row: row)
         }
     }
     
@@ -165,6 +166,34 @@ class GameBoardViewController: UIViewController {
             
             placedChips[i].removeAll(keepingCapacity: true)
         }
+    }
+    
+    private func checkRoundResult(column: Int, row: Int) {
+        var gameOverTitle: String? = nil
+        
+        if board.playerWins(column: column, row: row) {
+            gameOverTitle = "\(board.currentPlayer.chip.name) wins"
+        } else if board.isGameBoardFull() {
+            gameOverTitle = "Draw!"
+        }
+        
+        if gameOverTitle != nil {
+            let alert = UIAlertController(title: gameOverTitle, message: "", preferredStyle: .alert)
+            let alertAction = UIAlertAction(title: "Play again", style: .default) { [unowned self] (action) in
+                self.resetBoard()
+            }
+            
+            alert.addAction(alertAction)
+            present(alert, animated: true)
+            return
+        }
+        
+        board.currentPlayer = board.currentPlayer.opponent
+        updateUI()
+    }
+    
+    private func updateUI() {
+        title = "\(board.currentPlayer.chip.name)'s turn"
     }
     
     //MARK: Draw board
@@ -199,4 +228,5 @@ class GameBoardViewController: UIViewController {
         yOffset -= size * CGFloat(row)
         return CGPoint(x: xOffset, y: yOffset)
     }
+    
 }
