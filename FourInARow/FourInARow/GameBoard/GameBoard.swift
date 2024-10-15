@@ -41,4 +41,8 @@ class GameBoard: NSObject {
         return nil
     }
     
+    private func canMove(in column: Int) -> Bool {
+        return nextEmptySlot(in: column) != nil
+    }
+    
 }
