@@ -4,6 +4,8 @@
 
 A Four in a Row game implemented with Swift and UIKit.
 
+https://github.com/user-attachments/assets/203c2b92-ef6c-421b-95f4-42ab3a62a618
+
 ## Inspiration
 
 This project is inspired by the Four in a Row app challenge proposed on MoureDev's web page. 
